@@ -9,7 +9,7 @@ const Home = () => {
     <Positioner>
       <Styled.GlobalStyle />
       <Styled.Title>다른 색깔 찾기</Styled.Title>
-      <Styled.Button id="list" bgcolor="#ff2e35" onClick={() => navigate('/play')}>
+      <Styled.Button id="list" bgcolor="#ff2e35" onClick={() => navigate('/ready')}>
         게임시작
       </Styled.Button>
       <Styled.Button bgcolor="#01a8ff" onClick={() => navigate('/rank')}>
