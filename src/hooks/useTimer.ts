@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 
 export interface TimerHookProps {
   time: number;
-  animationActive: boolean;
+  active: boolean;
   startTimer: () => void;
   stopTimer: () => void;
   resetTimer: () => void;
@@ -13,7 +13,7 @@ export const ONE_SECOND = 1000;
 
 function useTimer(): TimerHookProps {
   const [time, setTime] = useState<number>(INITIAL_TIME);
-  const [animationActive, setAnimationActive] = useState<boolean>(false);
+  const [active, setActive] = useState<boolean>(false);
   const intervalRef: { current: NodeJS.Timeout | null } = useRef(null);
 
   const startTimer = useCallback(() => {
@@ -37,13 +37,13 @@ function useTimer(): TimerHookProps {
 
   const minusTime = useCallback(() => {
     setTime(time - 3);
-    setAnimationActive(true);
+    setActive(true);
     setTimeout(() => {
-      setAnimationActive(false);
+      setActive(false);
     }, 100);
   }, [time]);
 
-  return { time, animationActive, startTimer, stopTimer, resetTimer, minusTime };
+  return { time, active, startTimer, stopTimer, resetTimer, minusTime };
 }
 
 export default useTimer;
