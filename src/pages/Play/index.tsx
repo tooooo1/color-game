@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import Board from '../../components/Board';
 import useRound, { RoundHookProps } from '../../hooks/useRound';
 import useTimer, { TimerHookProps } from '../../hooks/useTimer';
 import usePoint, { PointHookProps } from '../../hooks/usePoint';
@@ -9,7 +10,7 @@ const Play = () => {
   const { round, active, nextRound, resetRound }: RoundHookProps = useRound();
   const {
     time,
-    animationActive: timeActive,
+    active: timeActive,
     startTimer,
     stopTimer,
     resetTimer,
@@ -17,6 +18,16 @@ const Play = () => {
   }: TimerHookProps = useTimer();
 
   const { point, resetPoint, scorePoint }: PointHookProps = usePoint();
+
+  const handleAnswerCardClick = useCallback((): void => {
+    nextRound();
+    resetTimer();
+    scorePoint(round, time);
+  }, [nextRound, resetTimer, scorePoint, round, time]);
+
+  const handleWrongCardClick = useCallback((): void => {
+    minusTime();
+  }, [minusTime]);
 
   return (
     <Positioner>
@@ -28,6 +39,13 @@ const Play = () => {
           </Styled.Round>
           <Styled.TimeUp active={timeActive}>{time}</Styled.TimeUp>
         </Styled.RoundWrapper>
+        <Styled.BoardWrapper>
+          <Board
+            handleAnswerCardClick={handleAnswerCardClick}
+            handleWrongCardClick={handleWrongCardClick}
+            round={round}
+          />
+        </Styled.BoardWrapper>
         <Styled.Score active={active}>{point.toLocaleString()}</Styled.Score>
       </Styled.Wrapper>
     </Positioner>

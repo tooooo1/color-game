@@ -19,6 +19,13 @@ export const Wrapper = styled.div`
   box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.2);
 `;
 
+export const BoardWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2vh;
+`;
+
 export const Score = styled.div<{ active: boolean }>`
   font-size: 3vw;
   text-align: center;
