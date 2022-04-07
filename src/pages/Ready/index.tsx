@@ -18,7 +18,7 @@ const Ready = () => {
     }
 
     setLogin(!login);
-    navigate('/mode');
+    navigate('/play');
   };
 
   return (

@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
-import { Home, Ready } from './pages';
+import { Home, Ready, Play } from './pages';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -18,6 +18,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ready" element={<Ready />} />
+        <Route path="/play" element={<Play />} />
       </Routes>
     </BrowserRouter>
   );
