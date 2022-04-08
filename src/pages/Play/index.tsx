@@ -49,6 +49,7 @@ const Play = () => {
       setPoint(point);
       setRound(round);
       addRecordInStore(round, point);
+      scorePoint(round, time);
       navigate('/result');
     }
   });
