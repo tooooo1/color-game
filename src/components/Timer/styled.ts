@@ -5,6 +5,9 @@ export const Container = styled.div<{ time: number; active: boolean }>`
   position: relative;
   height: 30px;
   margin: 0 auto;
+  @media only screen and (min-width: 768px) {
+    width: 60%;
+  }
   margin-bottom: 1rem;
   @keyframes shake {
     0% {
@@ -65,5 +68,6 @@ export const Progress = styled.div<{ time: number }>`
   height: 100%;
   position: absolute;
   background-color: black;
+  background-color: ${(props) => props.time <= 5 && `#ffd400`};
   border-radius: 5px;
 `;
