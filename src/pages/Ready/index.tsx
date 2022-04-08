@@ -3,11 +3,15 @@ import { Positioner } from '../../components/Wrapper/styled';
 import { Button } from '../Home/styled';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
+import { userNameState } from '../../recoil/recoil';
+import store from '../../utils/store';
 
 const Ready = () => {
   const imgUrl = 'https://img.icons8.com/color/48/000000/box-important--v1.png';
   const [value, setValue] = useState('');
   const [login, setLogin] = useState(false);
+  const setUserName = useSetRecoilState<string>(userNameState);
   let navigate = useNavigate();
 
   const loginClick = () => {
@@ -17,7 +21,15 @@ const Ready = () => {
       return;
     }
 
+    if (value.trim().length > 8) {
+      alert('닉네임은 8자 이하로 작성해주세요');
+      setValue('');
+      return;
+    }
+
     setLogin(!login);
+    setUserName(value);
+    store.setSessionStorage('userName', value);
     navigate('/play');
   };
 
