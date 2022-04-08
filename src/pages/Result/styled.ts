@@ -1,9 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: #f2f2f2;
-  }
   #root>div {
       width: 80%;
       @media only screen and (min-width: 768px) {
@@ -92,16 +89,6 @@ export const GridContainer = styled.div`
   grid-column-gap: 16px;
   justify-content: center;
   align-items: center;
-`;
-
-export const Wrapper = styled.div`
-  padding: 10vw 0;
-  border-radius: 12px;
-  background-color: #ffffff;
-  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.2);
-  @media (min-width: 768px) {
-    padding: 5vw 0;
-  }
 `;
 
 export const ResultWrapper = styled.div`
