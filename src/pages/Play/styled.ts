@@ -35,6 +35,9 @@ export const Score = styled.div<{ active: boolean }>`
     margin-top: 2vh;
     font-size: 4vw;
     color: #444444;
+    @media only screen and (min-width: 768px) {
+      font-size: 30px;
+    }
   }
 `;
 
