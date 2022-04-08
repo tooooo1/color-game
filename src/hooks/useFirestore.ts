@@ -18,13 +18,13 @@ export const USERS_COLLECTION = 'users';
 export const USER_NAME = 'userName';
 export interface UsersRecordProps {
   userName: string;
-  stage: number;
+  round: number;
   point: number;
   time: Date;
 }
 
 export interface FirestoreHookProps {
-  addRecordInStore: (stage: number, point: number) => void;
+  addRecordInStore: (round: number, point: number) => void;
   getRecordsInStore: () => Promise<UsersRecordProps[] | DocumentData[]>;
 }
 
@@ -32,11 +32,11 @@ function useFirestore(): FirestoreHookProps {
   const usersRef = collection(firestore, USERS_COLLECTION);
 
   const addRecordInStore = useCallback(
-    async (stage: number, point: number) => {
+    async (round: number, point: number) => {
       try {
         await addDoc(usersRef, {
           userName: store.getSessionStorage(USER_NAME),
-          stage,
+          round,
           point,
           time: new Date(),
         });
@@ -51,7 +51,7 @@ function useFirestore(): FirestoreHookProps {
   const getRecordsInStore = useCallback(async (): Promise<UsersRecordProps[] | DocumentData[]> => {
     const querySnapshot = query(
       usersRef,
-      orderBy('stage', 'desc'),
+      orderBy('round', 'desc'),
       orderBy('point', 'desc'),
       limit(100)
     );

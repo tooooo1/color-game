@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
-const firebaseConfigDev = {
+const firebaseConfig = {
   apiKey: process.env.REACT_APP_DEV_API_KEY,
   authDomain: process.env.REACT_APP_DEV_AUTH_DOMAIN,
   projectId: process.env.REACT_APP_DEV_PROJECT_ID,
@@ -12,10 +11,8 @@ const firebaseConfigDev = {
   measurementId: process.env.REACT_APP_DEV_MEASUREMENT_ID,
 };
 
-// const config = process.env.NODE_ENV === 'development' ? firebaseConfigDev : firebaseConfigProd;
-const config = firebaseConfigDev;
+const config = firebaseConfig;
 
-// initializeApp(config);
 initializeApp(config);
 const firestore = getFirestore();
 
