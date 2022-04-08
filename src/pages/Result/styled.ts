@@ -20,6 +20,29 @@ export const Round = styled.div`
   text-align: center;
 `;
 
+export const URLShareButton = styled.button`
+  width: 48px;
+  height: 48px;
+  color: white;
+  border-radius: 24px;
+  border: 0px;
+  padding: 0;
+  font-family: 'Pretendard-Medium';
+  font-weight: 800;
+  cursor: pointer;
+  background-color: #666666;
+`;
+
+export const ShareText = styled.div`
+  margin-top: 3vh;
+  padding: 2vh;
+  font-weight: initial;
+  font-size: 2.4vh;
+  color: #c1c1c1;
+  font-family: 'Pretendard-SemiBold';
+  text-align: center;
+`;
+
 export const Color = styled.span`
   color: #1bb749;
   text-align: center;
@@ -61,6 +84,14 @@ export const Power = styled.div`
     font-size: 25px;
     width: 100%;
   }
+`;
+
+export const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 55px);
+  grid-column-gap: 16px;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Wrapper = styled.div`
