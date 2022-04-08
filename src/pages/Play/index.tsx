@@ -1,12 +1,17 @@
-import { useCallback, useState } from 'react';
-import Board from '../../components/Board';
+import { useCallback, useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { Board, Timer } from '../../components';
 import useRound, { RoundHookProps } from '../../hooks/useRound';
 import useTimer, { TimerHookProps } from '../../hooks/useTimer';
 import usePoint, { PointHookProps } from '../../hooks/usePoint';
+import useFirestore, { FirestoreHookProps } from '../../hooks/useFirestore';
 import * as Styled from './styled';
 import { Positioner } from '../../components/Wrapper/styled';
+import { userNameState } from '../../recoil/auth';
 
 const Play = () => {
+  const userName = useRecoilValue<string>(userNameState);
+  const { addRecordInStore }: FirestoreHookProps = useFirestore();
   const { round, active, nextRound, resetRound }: RoundHookProps = useRound();
   const {
     time,
@@ -29,6 +34,19 @@ const Play = () => {
     minusTime();
   }, [minusTime]);
 
+  useEffect(() => {
+    startTimer();
+    return () => stopTimer();
+  }, [startTimer, stopTimer]);
+
+  useEffect(() => {
+    if (time < 0) {
+      stopTimer();
+      resetTimer();
+      addRecordInStore(round, point);
+    }
+  }, [addRecordInStore, point, resetTimer, round, stopTimer, time]);
+
   return (
     <Positioner>
       <Styled.GlobalStyle />
@@ -37,7 +55,7 @@ const Play = () => {
           <Styled.Round>
             ROUND <Styled.Stage active={active}>{round}</Styled.Stage>
           </Styled.Round>
-          <Styled.TimeUp active={timeActive}>{time}</Styled.TimeUp>
+          <Timer active={timeActive} time={time} />
         </Styled.RoundWrapper>
         <Styled.BoardWrapper>
           <Board
