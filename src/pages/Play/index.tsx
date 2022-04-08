@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useCallback, useEffect } from 'react';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { Board, Timer } from '../../components';
 import useRound, { RoundHookProps } from '../../hooks/useRound';
 import useTimer, { TimerHookProps } from '../../hooks/useTimer';
@@ -7,12 +7,16 @@ import usePoint, { PointHookProps } from '../../hooks/usePoint';
 import useFirestore, { FirestoreHookProps } from '../../hooks/useFirestore';
 import * as Styled from './styled';
 import { Positioner } from '../../components/Wrapper/styled';
-import { userNameState } from '../../recoil/auth';
+import { userNameState, roundState, pointState } from '../../recoil/recoil';
+import { useNavigate } from 'react-router-dom';
 
 const Play = () => {
+  let navigate = useNavigate();
   const userName = useRecoilValue<string>(userNameState);
+  const setRound = useSetRecoilState(roundState);
+  const setPoint = useSetRecoilState(pointState);
   const { addRecordInStore }: FirestoreHookProps = useFirestore();
-  const { round, active, nextRound, resetRound }: RoundHookProps = useRound();
+  const { round, active, nextRound }: RoundHookProps = useRound();
   const {
     time,
     active: timeActive,
@@ -22,7 +26,7 @@ const Play = () => {
     minusTime,
   }: TimerHookProps = useTimer();
 
-  const { point, resetPoint, scorePoint }: PointHookProps = usePoint();
+  const { point, scorePoint }: PointHookProps = usePoint();
 
   const handleAnswerCardClick = useCallback((): void => {
     nextRound();
@@ -42,30 +46,33 @@ const Play = () => {
   useEffect(() => {
     if (time < 0) {
       stopTimer();
-      resetTimer();
+      setPoint(point);
+      setRound(round);
       addRecordInStore(round, point);
+      navigate('/result');
     }
-  }, [addRecordInStore, point, resetTimer, round, stopTimer, time]);
+  });
 
   return (
     <Positioner>
       <Styled.GlobalStyle />
-      <Styled.Wrapper>
-        <Styled.RoundWrapper>
-          <Styled.Round>
-            ROUND <Styled.Stage active={active}>{round}</Styled.Stage>
-          </Styled.Round>
-          <Timer active={timeActive} time={time} />
-        </Styled.RoundWrapper>
-        <Styled.BoardWrapper>
-          <Board
-            handleAnswerCardClick={handleAnswerCardClick}
-            handleWrongCardClick={handleWrongCardClick}
-            round={round}
-          />
-        </Styled.BoardWrapper>
-        <Styled.Score active={active}>{point.toLocaleString()}</Styled.Score>
-      </Styled.Wrapper>
+      <Styled.RoundWrapper>
+        <Styled.Round>
+          ROUND <Styled.Stage active={active}>{round}</Styled.Stage>
+        </Styled.Round>
+        <Timer active={timeActive} time={time} />
+      </Styled.RoundWrapper>
+      <Styled.BoardWrapper>
+        <Board
+          handleAnswerCardClick={handleAnswerCardClick}
+          handleWrongCardClick={handleWrongCardClick}
+          round={round}
+        />
+      </Styled.BoardWrapper>
+      <Styled.Score active={active}>{point.toLocaleString()}</Styled.Score>
+      <Styled.Score active={active} id="name">
+        {userName}
+      </Styled.Score>
     </Positioner>
   );
 };

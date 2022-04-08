@@ -1,11 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: #f2f2f2;
-  }
   #root>div {
-      width: 80%;
       @media only screen and (min-width: 768px) {
         width: 70%;
     }
@@ -27,20 +23,26 @@ export const BoardWrapper = styled.div`
 `;
 
 export const Score = styled.div<{ active: boolean }>`
-  font-size: 3vw;
+  font-size: 6vw;
   text-align: center;
   font-family: 'RixYeoljeongdo_Regular';
   @media only screen and (min-width: 768px) {
     font-size: 30px;
   }
   animation: ${(props) => props.active && `shake 0.3s infinite`};
+
+  &#name {
+    margin-top: 2vh;
+    font-size: 4vw;
+    color: #444444;
+  }
 `;
 
 export const Round = styled.div`
   font-weight: initial;
   font-size: 6vw;
   margin-bottom: 1rem;
-  font-family: 'Pretendard-SemiBold';
+  font-family: 'Pretendard-Black';
   text-align: center;
   @media only screen and (min-width: 768px) {
     font-size: 40px;
