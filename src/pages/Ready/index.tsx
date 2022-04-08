@@ -30,11 +30,11 @@ const Ready = () => {
         </Styled.Img>
         <Styled.Title>게임 설명</Styled.Title>
         <Styled.Text>1. 주어진 시간 안에 색이 다른 사각형을 찾는다.</Styled.Text>
-        <Styled.Text>2. 오답 클릭 시 3초 압수</Styled.Text>
+        <Styled.Text>2. 오답 클릭 시 -3초</Styled.Text>
         <Styled.Text id="last">
           3. <Styled.Color>ROUND</Styled.Color>가 올라갈수록 색상 차이 감소
         </Styled.Text>
-        <Styled.Ex id="last">점수는 ROUND가 높아지면 더 많이 상승합니다.</Styled.Ex>
+        <Styled.Ex id="last">점수는 ROUND가 높아질수록 더 많이 상승합니다.</Styled.Ex>
         <Styled.InputWrapper>
           <Styled.ReadyInput
             onChange={(e) => setValue(e.target.value)}
