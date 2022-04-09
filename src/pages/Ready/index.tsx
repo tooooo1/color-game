@@ -46,7 +46,9 @@ const Ready = () => {
         <Styled.Text id="last">
           3. <Styled.Color>ROUND</Styled.Color>가 올라갈수록 색상 차이 감소
         </Styled.Text>
-        <Styled.Ex id="last">점수는 ROUND가 높아질수록 더 많이 상승합니다.</Styled.Ex>
+        <Styled.Ex id="last">
+          점수는 ROUND가 높아질수록, 빠르게 찾을수록 더 많이 상승합니다.
+        </Styled.Ex>
         <Styled.InputWrapper>
           <Styled.ReadyInput
             onChange={(e) => setValue(e.target.value)}
