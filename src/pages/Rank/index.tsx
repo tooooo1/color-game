@@ -8,19 +8,18 @@ const Rank = () => {
   let navigate = useNavigate();
   const { getRecordsInStore } = useFirestore();
   const [userList, setUserList] = useState<UsersRecordProps[] | DocumentData[]>([]);
-  const [flag, setFlag] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
-        if (flag) {
-          setUserList(await getRecordsInStore());
-          console.log('1');
-          setFlag(false);
-        }
-      } catch (e) {}
+        setUserList(await getRecordsInStore());
+        console.log('1');
+      } catch (e) {
+        throw new Error();
+      }
     })();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Styled.Container>
