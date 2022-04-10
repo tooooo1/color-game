@@ -14,7 +14,7 @@ function usePoint(): PointHookProps {
   }, []);
 
   const scorePoint = useCallback((stage, time) => {
-    const point = (2 * stage) ** 2 * (time / 2);
+    const point = stage ** 3 + time * stage;
     setPoint((prevPoint) => prevPoint + point);
   }, []);
 
