@@ -15,10 +15,8 @@ const Rank = () => {
       <Styled.Info>
         <Styled.InfoTr>
           <Styled.InfoTitle>안녕하세요. 개발자 퉁이리입니다.</Styled.InfoTitle>
-          <Styled.InfoText>
-            오늘 조회할 수 있는 데이터(50,000 view)가 전부 사용되었어요.
-          </Styled.InfoText>
-          <Styled.InfoText>사랑해주셔서 감사합니다.</Styled.InfoText>
+          <Styled.InfoText>오늘 준비한 데이터(50,000 view)가 전부 사용되었어요.</Styled.InfoText>
+          <Styled.InfoText>많은 사랑 감사합니다.</Styled.InfoText>
           <Styled.InfoText>오후 7시에 다시 와주세요!</Styled.InfoText>
         </Styled.InfoTr>
       </Styled.Info>

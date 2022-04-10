@@ -100,6 +100,7 @@ export const Info = styled.tbody`
   align-items: center;
   padding: 1rem 0;
   border-left: 1px solid #eeeeee;
+  text-align: left;
 `;
 
 export const InfoTr = styled.tr``;
@@ -107,13 +108,13 @@ export const InfoTr = styled.tr``;
 export const InfoTitle = styled.td`
   display: flex;
   font-family: 'RixYeoljeongdo_Regular';
-  font-size: 1.5rem;
+  font-size: 6vw;
   margin-bottom: 1rem;
 `;
 
 export const InfoText = styled.td`
   display: flex;
   font-family: 'Pretendard-Bold';
-  font-size: 1rem;
+  font-size: 3vw;
   margin-bottom: 0.5rem;
 `;
