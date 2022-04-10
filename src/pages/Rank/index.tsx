@@ -13,13 +13,11 @@ const Rank = () => {
   const Free = () => {
     return (
       <Styled.Info>
-        <Styled.InfoTr>
-          <Styled.InfoTitle>안녕하세요. 개발자 퉁이리입니다.</Styled.InfoTitle>
-          <Styled.InfoText>오늘 준비한 데이터(50,000 view)가 전부 사용되었어요.</Styled.InfoText>
-          <Styled.InfoText>많은 사랑 감사합니다.</Styled.InfoText>
-          <Styled.InfoText id="id">오후 7시에 다시 와주세요!</Styled.InfoText>
-          <Styled.InfoText id="id">게임하신 데이터는 잘보관하였으니 걱정마세요!</Styled.InfoText>
-        </Styled.InfoTr>
+        <Styled.InfoTitle>안녕하세요. 개발자 퉁이리입니다.</Styled.InfoTitle>
+        <Styled.InfoText>오늘 준비한 데이터(50,000 view)가 전부 사용되었어요.</Styled.InfoText>
+        <Styled.InfoText>많은 사랑 감사합니다.</Styled.InfoText>
+        <Styled.InfoText id="id">오후 7시에 다시 와주세요!</Styled.InfoText>
+        <Styled.InfoText id="id">게임하신 데이터는 잘보관하였으니 걱정마세요!</Styled.InfoText>
       </Styled.Info>
     );
   };
@@ -58,7 +56,7 @@ const Rank = () => {
         </Styled.THead>
 
         {flag ? (
-          <Free />
+          <></>
         ) : (
           <Styled.TBody>
             {userList.map((data, index) => {
@@ -104,6 +102,7 @@ const Rank = () => {
           </Styled.TBody>
         )}
       </Styled.Table>
+      {flag ? <Free /> : <></>}
     </Styled.Container>
   );
 };

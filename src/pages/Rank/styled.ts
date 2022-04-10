@@ -40,9 +40,7 @@ export const THead = styled.thead`
   font-family: 'RixYeoljeongdo_Regular';
 `;
 
-export const THeadRow = styled.tr`
-  display: flex;
-`;
+export const THeadRow = styled.tr``;
 
 export const TBody = styled.tbody`
   font-family: 'Pretendard-SemiBold';
@@ -93,27 +91,20 @@ export const RankerPoint = styled.td`
   border-left: 1px solid #eeeeee;
 `;
 
-export const Info = styled.tbody`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+export const Info = styled.div`
   align-items: center;
   padding: 1rem 0;
   border-left: 1px solid #eeeeee;
   text-align: left;
 `;
 
-export const InfoTr = styled.tr``;
-
-export const InfoTitle = styled.td`
-  display: flex;
+export const InfoTitle = styled.div`
   font-family: 'RixYeoljeongdo_Regular';
   font-size: 6vw;
   margin-bottom: 1rem;
 `;
 
-export const InfoText = styled.td`
-  display: flex;
+export const InfoText = styled.div`
   font-family: 'Pretendard-Bold';
   font-size: 3vw;
   margin-bottom: 0.5rem;
