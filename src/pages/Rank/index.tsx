@@ -8,14 +8,29 @@ const Rank = () => {
   let navigate = useNavigate();
   const { getRecordsInStore } = useFirestore();
   const [userList, setUserList] = useState<UsersRecordProps[] | DocumentData[]>([]);
+  const [flag, setFlag] = useState(false);
+
+  const Free = () => {
+    return (
+      <Styled.Info>
+        <Styled.InfoTr>
+          <Styled.InfoTitle>안녕하세요. 개발자 퉁이리입니다.</Styled.InfoTitle>
+          <Styled.InfoText>
+            오늘 조회할 수 있는 데이터(50,000 view)가 전부 사용되었어요.
+          </Styled.InfoText>
+          <Styled.InfoText>사랑해주셔서 감사합니다.</Styled.InfoText>
+          <Styled.InfoText>오후 7시에 다시 와주세요!</Styled.InfoText>
+        </Styled.InfoTr>
+      </Styled.Info>
+    );
+  };
 
   useEffect(() => {
     (async () => {
       try {
         setUserList(await getRecordsInStore());
-        console.log('1');
       } catch (e) {
-        throw new Error();
+        setFlag(true);
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,48 +57,53 @@ const Rank = () => {
             <Styled.Point>POINT</Styled.Point>
           </Styled.THeadRow>
         </Styled.THead>
-        <Styled.TBody>
-          {userList.map((data, index) => {
-            if (index + 1 === 1) {
+
+        {flag ? (
+          <Free />
+        ) : (
+          <Styled.TBody>
+            {userList.map((data, index) => {
+              if (index + 1 === 1) {
+                return (
+                  <Styled.TBodyRow key={data.time}>
+                    <Styled.Rank>🥇</Styled.Rank>
+                    <Styled.RankerUserName>{data.userName}</Styled.RankerUserName>
+                    <Styled.Stage>{data.round}</Styled.Stage>
+                    <Styled.RankerPoint>{data.point.toLocaleString()}</Styled.RankerPoint>
+                  </Styled.TBodyRow>
+                );
+              }
+              if (index + 1 === 2) {
+                return (
+                  <Styled.TBodyRow key={data.time}>
+                    <Styled.Rank>🥈</Styled.Rank>
+                    <Styled.RankerUserName>{data.userName}</Styled.RankerUserName>
+                    <Styled.Stage>{data.round}</Styled.Stage>
+                    <Styled.RankerPoint>{data.point.toLocaleString()}</Styled.RankerPoint>
+                  </Styled.TBodyRow>
+                );
+              }
+              if (index + 1 === 3) {
+                return (
+                  <Styled.TBodyRow key={data.time}>
+                    <Styled.Rank>🥉</Styled.Rank>
+                    <Styled.RankerUserName>{data.userName}</Styled.RankerUserName>
+                    <Styled.Stage>{data.round}</Styled.Stage>
+                    <Styled.RankerPoint>{data.point.toLocaleString()}</Styled.RankerPoint>
+                  </Styled.TBodyRow>
+                );
+              }
               return (
                 <Styled.TBodyRow key={data.time}>
-                  <Styled.Rank>🥇</Styled.Rank>
-                  <Styled.RankerUserName>{data.userName}</Styled.RankerUserName>
+                  <Styled.Rank>{index + 1}등</Styled.Rank>
+                  <Styled.UserName>{data.userName}</Styled.UserName>
                   <Styled.Stage>{data.round}</Styled.Stage>
-                  <Styled.RankerPoint>{data.point.toLocaleString()}</Styled.RankerPoint>
+                  <Styled.Point>{data.point.toLocaleString()}</Styled.Point>
                 </Styled.TBodyRow>
               );
-            }
-            if (index + 1 === 2) {
-              return (
-                <Styled.TBodyRow key={data.time}>
-                  <Styled.Rank>🥈</Styled.Rank>
-                  <Styled.RankerUserName>{data.userName}</Styled.RankerUserName>
-                  <Styled.Stage>{data.round}</Styled.Stage>
-                  <Styled.RankerPoint>{data.point.toLocaleString()}</Styled.RankerPoint>
-                </Styled.TBodyRow>
-              );
-            }
-            if (index + 1 === 3) {
-              return (
-                <Styled.TBodyRow key={data.time}>
-                  <Styled.Rank>🥉</Styled.Rank>
-                  <Styled.RankerUserName>{data.userName}</Styled.RankerUserName>
-                  <Styled.Stage>{data.round}</Styled.Stage>
-                  <Styled.RankerPoint>{data.point.toLocaleString()}</Styled.RankerPoint>
-                </Styled.TBodyRow>
-              );
-            }
-            return (
-              <Styled.TBodyRow key={data.time}>
-                <Styled.Rank>{index + 1}등</Styled.Rank>
-                <Styled.UserName>{data.userName}</Styled.UserName>
-                <Styled.Stage>{data.round}</Styled.Stage>
-                <Styled.Point>{data.point.toLocaleString()}</Styled.Point>
-              </Styled.TBodyRow>
-            );
-          })}
-        </Styled.TBody>
+            })}
+          </Styled.TBody>
+        )}
       </Styled.Table>
     </Styled.Container>
   );

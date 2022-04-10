@@ -40,7 +40,9 @@ export const THead = styled.thead`
   font-family: 'RixYeoljeongdo_Regular';
 `;
 
-export const THeadRow = styled.tr``;
+export const THeadRow = styled.tr`
+  display: flex;
+`;
 
 export const TBody = styled.tbody`
   font-family: 'Pretendard-SemiBold';
@@ -69,6 +71,7 @@ export const UserName = styled.td`
 `;
 
 export const Stage = styled.td`
+  width: 15%;
   padding: 1rem 0;
   border-left: 1px solid #eeeeee;
 `;
@@ -88,4 +91,29 @@ export const RankerUserName = styled.td`
 export const RankerPoint = styled.td`
   padding: 1rem 0;
   border-left: 1px solid #eeeeee;
+`;
+
+export const Info = styled.tbody`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  border-left: 1px solid #eeeeee;
+`;
+
+export const InfoTr = styled.tr``;
+
+export const InfoTitle = styled.td`
+  display: flex;
+  font-family: 'RixYeoljeongdo_Regular';
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+`;
+
+export const InfoText = styled.td`
+  display: flex;
+  font-family: 'Pretendard-Bold';
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 `;
