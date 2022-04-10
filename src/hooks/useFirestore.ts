@@ -53,7 +53,7 @@ function useFirestore(): FirestoreHookProps {
       usersRef,
       orderBy('round', 'desc'),
       orderBy('point', 'desc'),
-      limit(50)
+      limit(30)
     );
     const documentSnapshots = await getDocs(querySnapshot);
     return documentSnapshots.docs.map((doc) => doc.data());
