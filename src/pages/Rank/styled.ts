@@ -117,4 +117,8 @@ export const InfoText = styled.td`
   font-family: 'Pretendard-Bold';
   font-size: 3vw;
   margin-bottom: 0.5rem;
+
+  &#id {
+    margin-top: 1.5rem;
+  }
 `;
