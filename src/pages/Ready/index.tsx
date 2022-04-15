@@ -1,3 +1,11 @@
+/*
+[게임 설명 페이지]
+
+게임에 대해 전반적으로 설명합니다.
+
+닉네임 정보를 받아서 store로 넘겨줍니다.
+*/
+
 import React, { useState } from 'react';
 import { Positioner } from '../../components/Wrapper/styled';
 import { Button } from '../Home/styled';

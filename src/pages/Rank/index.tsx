@@ -1,3 +1,12 @@
+/*
+[랭킹 페이지]
+
+30위까지의 정보를 보여주고, 
+무료 데이터(50,000view) 용량을 초과하여 데이터를 받아오지 못한다면 초기화되는 시간을 공지합니다.
+
+랭킹 정보를 firestore에서 받아옵니다.
+*/
+
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DocumentData } from 'firebase/firestore';

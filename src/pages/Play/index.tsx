@@ -1,3 +1,12 @@
+/*
+[게임 플레이 페이지]
+
+다른 색을 찾습니다.
+
+coponent Board와 Card, Time을 사용합니다.
+시간이 0이 되면 닉네임, 라운드, 포인트를 firestore에 전송합니다.
+*/
+
 import { useCallback, useEffect } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { Board, Timer } from '../../components';

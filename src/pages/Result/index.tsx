@@ -1,3 +1,9 @@
+/*
+[결과 페이지]
+
+상태관리(recoil)에 저장된 값들을 불러와서 보여줍니다.
+*/
+
 import * as Styled from './styled';
 import { Button } from '../Home/styled';
 import { Positioner } from '../../components/Wrapper/styled';
